@@ -66,10 +66,25 @@ make
 ./ircserv <port> <password>
 
 ./ircserv 6667 mypass
+```
 
+Connection avec un client IRC
+```sh
 nc -C 127.0.0.1 6667
 PASS mypass
 NICK jen
 USER jen 0 * :Jennifer
 JOIN #42
 PRIVMSG #42 :Hello from my IRC server!
+```
+
+✅ Comportement réseau
+- Sockets non-bloquantes
+- Agrégation des buffers pour gérer les paquets partiels
+- Gestion des déconnexions inattendues
+- Robustesse en cas de faible bande passante
+
+🚫 Contraintes & Sécurité
+- Aucune lib externe, aucun Boost
+- Respect strict de C++98
+- Aucune fuite mémoire / crash accepté
